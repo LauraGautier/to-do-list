@@ -24,6 +24,15 @@ public class Main {
             System.out.println(task);
         }
 
+        String[] tasks2 = new String[tasks.length+1];
+        System.arraycopy(tasks, 0, tasks2, 0, tasks.length);
+        System.out.println("Tu peux ajouter une tâche ci-dessous");
+        String task = scanner.nextLine();
+        tasks2[tasks2.length-1] = task;
+        for (String t : tasks2) {
+            System.out.println(t);
+        }
+
         scanner.close();
     }
 }
