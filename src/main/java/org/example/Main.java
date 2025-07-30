@@ -6,6 +6,7 @@ import org.example.exceptions.ElementNotFoundException;
 import org.example.models.Task;
 import org.example.models.User;
 import org.example.models.DatedTask;
+import org.example.server.HttpServer;
 
 import java.util.List;
 import java.util.Scanner;
@@ -34,7 +35,8 @@ public class Main {
             System.out.println("2. Créer une tâche");
             System.out.println("3. Modifier une tâche");
             System.out.println("4. Supprimer une tâche");
-            System.out.println("5. Quitter");
+            System.out.println("5. Démarrer le serveur HTTP");
+            System.out.println("6. Quitter");
             System.out.print("Votre choix : ");
 
             int choice = scanner.nextInt();
@@ -45,7 +47,8 @@ public class Main {
                 case 2: creerTache(user); break;
                 case 3: modifierTache(); break;
                 case 4: supprimerTache(); break;
-                case 5: return;
+                case 5: demarrerServeur(); break;
+                case 6: return;
                 default: System.out.println("Choix invalide !");
             }
         }
@@ -159,5 +162,11 @@ public class Main {
         } catch (ElementNotFoundException e) {
             System.out.println("Erreur : " + e.getMessage());
         }
+    }
+
+    private static void demarrerServeur() {
+        System.out.println("Démarrage du serveur HTTP...");
+        HttpServer server = new HttpServer();
+        server.start();
     }
 }
